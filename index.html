@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>打虎新形态</title>
+    <title></title>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/animate.min.css">
@@ -303,6 +303,60 @@
       margin-left: -.73rem;
       bottom: 0;
     }
+    /*swiper-slide3*/
+    .swiper-slide3 .J-connent img{
+      top: .3rem;
+    }
+    /*swiper-slide4*/
+    .swiper-slide4 .J-connent-title{
+      float: right;
+      display: inline-block;
+      color: #fff;
+      font-size: .33rem;
+      background-color: #ffc82b;
+      font-weight: bolder;
+      padding: .05rem .5rem;
+      margin-right: -6%;
+      margin-top: .5rem;
+      position: relative;
+      z-index: 10;
+
+    }
+    .swiper-slide4 .J-connent .dataline{
+      width: 3.333rem;
+      height: 7.15rem;
+      right: .4rem;
+      top: -.5rem;
+    }
+    .swiper-slide4 .jiangbei{
+      width: 1.15rem;
+      height: 1.3rem;
+      margin-left: 1.5rem;
+    }
+    .swiper-slide4 .J-tip{
+      background: url(images/tip.png) no-repeat;
+      width: 1.71rem;
+      height: 1.65rem;
+      background-size: contain;
+      margin-top: .8rem;
+      margin-left: 1rem;
+      position: relative;
+      z-index: 11;
+      text-align: center;
+      color: #fff;
+      padding: .1rem;
+      -moz-box-pack: center; /*Firefox*/
+      -webkit-box-pack: center; /*Safari,Opera,Chrome*/
+      box-pack: center;
+    }
+    .J-box{
+      display: -moz-box; /*Firefox*/
+      display: -webkit-box; /*Safari,Opera,Chrome*/
+      display: box;
+      -moz-box-align: center; /*Firefox*/
+      -webkit-box-align: center; /*Safari,Opera,Chrome*/
+      box-align: center;
+    }
     </style>
 </head>
 
@@ -354,7 +408,7 @@
               <div class="J-eirport ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></div>
 
               <div class="J-connent">
-                <div class="J-connent-title">足迹遍布5个城市</div>
+                <div class="J-connent-title">足迹遍布<span id="num"></span>个城市</div>
                 <img class="ani resize map" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0s" src="images/map.png" alt="">
                 <img class="ani resize searchbook" src="images/searchbook.png" alt="" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
                 
@@ -388,7 +442,10 @@
                 </div>
               </div>
               <div class="J-connent">
-                <img  class="ani resize shee" src="images/circle.png" alt="" swiper-animate-effect="slideInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-connent-title">使用次数最多的业务</div>
+                <img class="jiangbei" src="images/jiangbei.png" alt="">
+                <img class="ani resize dataline" src="images/dataline.png" alt="">
+                <div class="J-tip J-box">1212</div>
               </div>
 
               <!-- 公共图标 -->
@@ -397,9 +454,85 @@
             <!-- -----------slide5--------------- -->
             <section class="swiper-slide swiper-slide5">
               <div class="toothbg"></div>
-              <img src="upload/001.jpg" class="ani resize" style="width:320px;height:46px;left:0;top:20px;z-index:2;" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
-              <img src="upload/002.jpg" class="ani resize" style="width:320px;height:327px;left:0px;top:100px;z-index:1;" swiper-animate-effect="zoomInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
-
+              <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-title-con">
+                  <div class="J-title-num">5</div>
+                  <h1>阅读类应用使用排名前10%</h1>
+                </div>
+              </div>
+              <div class="J-connent J-box ani">
+                <div class="J-blqs">
+                  <img class="ani resize" src="images/blqs.png" alt="" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                </div>
+              </div>
+              <!-- 公共图标 -->
+              <div class="J-icon"></div>
+            </section>
+            <!-- -----------slide6--------------- -->
+            <section class="swiper-slide swiper-slide6" style="background-color: #53b4ff">
+              <div class="toothbg"></div>
+              <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-title-con">
+                  <div class="J-title-num">6</div>
+                  <h1>视频类应用次数排名前10%</h1>
+                </div>
+              </div>
+              <div class="J-connent J-box ani">
+                <div class="J-blqs">
+                  <img class="ani resize" src="images/zjdk.png" alt="" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                </div>
+              </div>
+              <!-- 公共图标 -->
+              <div class="J-icon"></div>
+            </section>
+            <!-- -----------slide7--------------- -->
+            <section class="swiper-slide swiper-slide7" style="background-color: #f8b500">
+              <div class="toothbg"></div>
+              <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-title-con">
+                  <div class="J-title-num">7</div>
+                  <h1>漫游时长排名前10%</h1>
+                </div>
+              </div>
+              <div class="J-connent J-box ani">
+                <div class="J-blqs">
+                  <img class="ani resize" src="images/kzfr.png" alt="" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                </div>
+              </div>
+              <!-- 公共图标 -->
+              <div class="J-icon"></div>
+            </section>
+            <!-- -----------slide8--------------- -->
+            <section class="swiper-slide swiper-slide8" style="background-color: #004098">
+              <div class="toothbg"></div>
+              <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-title-con">
+                  <div class="J-title-num">8</div>
+                  <h1>流量使用前10%</h1>
+                </div>
+              </div>
+              <div class="J-connent J-box ani">
+                <div class="J-blqs">
+                  <img class="ani resize" src="images/th.png" alt="" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                </div>
+              </div>
+              <!-- 公共图标 -->
+              <div class="J-icon"></div>
+            </section>
+            <!-- -----------slide9--------------- -->
+            <section class="swiper-slide swiper-slide9" style="background-color: #ffe500">
+              <div class="toothbg"></div>
+              <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-title-con">
+                  <div class="J-title-num">9</div>
+                  <h1>工作狂魔，没时间看手机了吧</h1>
+                </div>
+              </div>
+              <div class="J-connent J-box ani">
+                <div class="J-blqs">
+                  <img class="ani resize" src="images/gzk.png" alt="" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                </div>
+              </div>
               <!-- 公共图标 -->
               <div class="J-icon"></div>
             </section>
@@ -424,6 +557,18 @@
            _self.changePage();
        }, false);
     }());
+
+     // 数字增长
+     var number = 0;
+     var timeNum = setInterval("creat(5)", 1000);
+     function creat(num){
+        number = number + 1;
+        document.getElementById('num').innerHTML = number;
+        if (number >= num) {
+          clearInterval(timeNum);
+        }
+     }
+     creat(5);
 
     scaleW = window.innerWidth / 320;
     scaleH = window.innerHeight / 480;
