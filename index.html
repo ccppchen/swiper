@@ -23,6 +23,10 @@
     
     body {
         font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+        font-size: 14px;
+    }
+    ul,dl,li{
+      list-style: none;
     }
     
     .swiper-container {
@@ -38,6 +42,8 @@
     
     img {
         display: block;
+        width: 100%;
+        height: auto;
     }
     
     .swiper-pagination-bullet {
@@ -163,9 +169,11 @@
       background-size: contain;
       width: .98rem;
       height: 1.46rem;
+      font-size: .8rem;
+      padding-top: .08rem;
     }
     .swiper-slide .J-title .J-title-con h1{
-      font-size: .4rem;
+      font-size: .35rem;
       color: #fff;
       line-height: .65rem;
     }
@@ -195,11 +203,106 @@
       width: 1.4rem;
       height: .5rem;
     }
+    .swiper-slide .J-connent{
+      width: 90%;
+      position: absolute;
+      left: 5%;
+      top: 2rem;
+    }
     /*swiper-slide1*/
     .swiper-slide1 .J-title{
       background-color: #fbca00;
     }
-    
+    .swiper-slide1 .J-phone{
+      right: 0;
+      top: 1.2rem;
+      background: url(images/phone@2x.png) no-repeat;
+      background-size: contain;
+      width: .8rem;
+      height: 1.6rem;
+    }
+    .swiper-slide1 .J-connent h2{
+      color: #fff;
+      font-size: .4rem;
+      font-weight: normal;
+      line-height: .7rem;
+    }
+    .swiper-slide1 .J-connent .J-connent-title{
+      font-size: .3rem;
+      color: #fff;
+      padding: .1rem .2rem;
+      background-color: #61605d;
+      display: inline-block;
+      font-weight: bolder;
+    }
+    .swiper-slide1 .J-zhuxing img{
+      width: 90%;
+      height:auto;
+      margin: .3rem auto;
+    }
+    .swiper-slide1 .J-book{
+      background: url(images/book.png) no-repeat;
+      background-size: 1.02rem 1.07rem;
+      width: 90%;
+      margin: 0 auto;
+      padding-left: 1.2rem;
+      box-sizing: border-box;
+    }
+    .swiper-slide1 .J-book li{
+      height: .5rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.5);
+    }
+    /*swiper-slide2*/
+    .swiper-slide2 .J-eirport{
+      background: url(images/eirport.png) no-repeat;
+      background-size: contain;
+      width: 2.7rem;
+      height: 1.65rem;
+      right: .1rem;
+      top: .85rem;
+    }
+    .swiper-slide2 .J-title{
+      width: 76%;
+    }
+    .swiper-slide2 .J-connent-title{
+      float: right;
+      display: inline-block;
+      background-color: #30526c;
+      color: #fff;
+      font-weight: bolder;
+      padding: .1rem .2rem;
+      font-size: .33rem;
+      position: relative;
+    }
+    .swiper-slide2 .J-connent-title::before{
+      content: '';
+      width: .96rem;
+      height: .96rem;
+      background: #00929f url(images/user.png) center center no-repeat;
+      background-size: .5rem .52rem;
+      position: absolute;
+      left: -.8rem;
+      top: -.18rem;
+      -webkit-border-radius: 50%;
+      -moz-border-radius: 50%;
+      border-radius: 50%;
+    }
+    .swiper-slide2 .J-connent .map{
+      top: 1.3rem;
+    }
+    .swiper-slide2 .J-connent .searchbook{
+      width: 1.7rem;
+      height: 1.56rem;
+      right: .5rem;
+      top: 4rem;
+    }
+    .swiper-slide2 .shee{
+      width: 1.46rem;
+      height: 3.9rem;
+      left: 50%;
+      margin-left: -.73rem;
+      bottom: 0;
+    }
     </style>
 </head>
 
@@ -218,6 +321,23 @@
                 </div>
               </div>
 
+              <div class="J-phone ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></div>
+              
+              <div class="J-connent ani">
+                <h2>3个月</h2>
+                <div class="J-connent-title">全省平均和本人的对比</div>
+                <div class="J-zhuxing">
+                  <img src="images/zhuxing.png" alt="柱形图">
+                </div>
+                <div class="J-book">
+                  <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                </div>
+              </div>
+
               <!-- 公共图标 -->
               <div class="J-icon"></div>
             </section>
@@ -227,29 +347,49 @@
               <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
                 <div class="J-title-con">
                   <div class="J-title-num">2</div>
-                  <h1>过去三月漫游使用情况</h1>
+                  <h1>过去三月漫游情况</h1>
                 </div>
               </div>
+              
+              <div class="J-eirport ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></div>
 
+              <div class="J-connent">
+                <div class="J-connent-title">足迹遍布5个城市</div>
+                <img class="ani resize map" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0s" src="images/map.png" alt="">
+                <img class="ani resize searchbook" src="images/searchbook.png" alt="" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                
+              </div>
+              <img  class="ani resize shee" src="images/shee.png" alt="" swiper-animate-effect="slideInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
               <!-- 公共图标 -->
               <div class="J-icon"></div>
             </section>
             <!-- --------------slide3------------ -->
             <section class="swiper-slide swiper-slide3">
               <div class="toothbg"></div>
-              <img src="upload/007.png" class="ani resize" style="width:320px;height:66px;left:0px;top:30px;z-index:5; " swiper-animate-effect="bounce" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
-              <img src="upload/008.png" class="ani resize" style="width:320px;height:192px;left:0px;top:220px;z-index:4;" swiper-animate-effect="bounceInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="1s">
-              <img src="upload/009.png" class="ani resize" style="width:320px;height:77px;left:0px;top:110px;z-index:3;" swiper-animate-effect="zoomIn" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
-              <img src="upload/010.png" class="ani resize" style="width:320px;height:192px;left:0px;top:220px;z-index:2;" swiper-animate-effect="bounceInRight" swiper-animate-duration="0.5s" swiper-animate-delay="1.5s">
-
+              <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-title-con">
+                  <div class="J-title-num">3</div>
+                  <h1>过去三月咪咕业务使用情况</h1>
+                </div>
+              </div>
+              <div class="J-connent">
+                <img  class="ani resize shee" src="images/circle.png" alt="" swiper-animate-effect="slideInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+              </div>
               <!-- 公共图标 -->
               <div class="J-icon"></div>
             </section>
             <!-- -----------slide4--------------- -->
             <section class="swiper-slide swiper-slide4">
               <div class="toothbg"></div>
-              <img src="upload/001.jpg" class="ani resize" style="width:320px;height:46px;left:0;top:20px;z-index:2;" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
-              <img src="upload/002.jpg" class="ani resize" style="width:320px;height:327px;left:0px;top:100px;z-index:1;" swiper-animate-effect="zoomInLeft" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s">
+              <div class="J-title ani resize" swiper-animate-effect="fadeInDown" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+                <div class="J-title-con">
+                  <div class="J-title-num">4</div>
+                  <h1>最喜欢的数据业务应用是</h1>
+                </div>
+              </div>
+              <div class="J-connent">
+                <img  class="ani resize shee" src="images/circle.png" alt="" swiper-animate-effect="slideInUp" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
+              </div>
 
               <!-- 公共图标 -->
               <div class="J-icon"></div>
