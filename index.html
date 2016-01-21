@@ -360,6 +360,31 @@
       -webkit-box-align: center; /*Safari,Opera,Chrome*/
       box-align: center;
     }
+    .J-box li{
+      -moz-box-flex: 1.0; /*Firefox*/
+      -webkit-box-flex: 1.0; /*Safari,Opera,Chrome*/
+      box-flex: 1.0;
+      font-size: .12rem;
+      text-align: center;
+      color: #61605d;
+    }
+    .J-box li:nth-child(2n){
+      color: #d8af05;
+    }
+    .J-zhu{
+      -moz-box-align: end; /*Firefox*/
+      -webkit-box-align: end; /*Safari,Opera,Chrome*/
+      box-align: end;
+    }
+    .J-zhu li{
+      height: 10%;
+      margin: 0 .3rem;
+      background-color: #dbdcdc;
+      transition: height .5s;
+    }
+    .J-zhu li:nth-child(2n){
+      background-color: #fbca00;
+    }
     #total .t_num{ display:inline-block;}
     #total .t_num i{width:18px;text-align: center;height:20px; display:inline-block; background: url(images/number.png) no-repeat; background-position:0 0; text-indent:-999em;}
 
@@ -386,8 +411,24 @@
               <div class="J-connent ani">
                 <h2>3个月</h2>
                 <div class="J-connent-title">全省平均和本人的对比</div>
-                <div class="J-zhuxing">
-                  <img src="images/chartbg.png" alt="柱形图">
+                <div class="J-zhuxing" style="background: url(images/chartbg.png) center center no-repeat; background-size: 90% auto; height: 4.5rem;">
+                  <ul class="J-box J-zhu" style="height: 3.1rem; width: 90%; margin: 0 auto;">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                  </ul>
+                  <ul class="J-box avg" style="width: 90%; margin: 0 auto;">
+                    <li>全身平均</li>
+                    <li>本人</li>
+                    <li>全身平均</li>
+                    <li>本人</li>
+                    <li>全身平均</li>
+                    <li>本人</li>
+                  </ul>
+                  <!-- <img src="images/chartbg.png" alt="柱形图"> -->
                   <!-- <img src="images/zhuxing.png" alt="柱形图"> -->
                 </div>
                 <div class="J-book">
@@ -646,6 +687,13 @@
         } 
     } 
     show_num(1);
+
+    $('.J-zhu li:eq(0)').css('height', '30%');
+    $('.J-zhu li:eq(1)').css('height', '40%');
+    $('.J-zhu li:eq(2)').css('height', '40%');
+    $('.J-zhu li:eq(3)').css('height', '60%');
+    $('.J-zhu li:eq(4)').css('height', '40%');
+    $('.J-zhu li:eq(5)').css('height', '90%');
     </script>
 </body>
 
