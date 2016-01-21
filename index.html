@@ -10,7 +10,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script src="js/swiper.jquery.min.js"></script>
     <script src="js/swiper.animate.min.js"></script>
-    <script type="text/javascript" src="js/echarts.simple.min.js"></script>
+    <script type="text/javascript" src="js/numanimate.js"></script>
     <style>
     * {
         margin: 0;
@@ -360,6 +360,9 @@
       -webkit-box-align: center; /*Safari,Opera,Chrome*/
       box-align: center;
     }
+    #total .t_num{ display:inline-block;}
+    #total .t_num i{width:18px;text-align: center;height:20px; display:inline-block; background: url(images/number.png) no-repeat; background-position:0 0; text-indent:-999em;}
+
     </style>
 </head>
 
@@ -384,10 +387,10 @@
                 <h2>3个月</h2>
                 <div class="J-connent-title">全省平均和本人的对比</div>
                 <div class="J-zhuxing">
+                  <img src="images/chartbg.png" alt="柱形图">
                   <!-- <img src="images/zhuxing.png" alt="柱形图"> -->
-                  <div id="main" style="width: 100%;height:5.2rem;"></div>
                 </div>
-                <div class="J-book" style="margin-top: -.5rem">
+                <div class="J-book">
                   <ul>
                     <li></li>
                     <li></li>
@@ -412,7 +415,7 @@
               <div class="J-eirport ani" swiper-animate-effect="fadeInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0.5s"></div>
 
               <div class="J-connent">
-                <div class="J-connent-title">足迹遍布<span id="num"></span>个城市</div>
+                <div class="J-connent-title" id="total">足迹遍布<span class="t_num"></span>个城市</div>
                 <img class="ani resize map" swiper-animate-effect="pulse" swiper-animate-duration="0.5s" swiper-animate-delay="0s" src="images/map.png" alt="">
                 <img class="ani resize searchbook" src="images/searchbook.png" alt="" swiper-animate-effect="slideInRight" swiper-animate-duration="0.5s" swiper-animate-delay="0s">
                 
@@ -562,18 +565,6 @@
        }, false);
     }());
 
-     // 数字增长
-     var number = 0;
-     var timeNum = setInterval("creat(5)", 1000);
-     function creat(num){
-        number = number + 1;
-        document.getElementById('num').innerHTML = number;
-        if (number >= num) {
-          clearInterval(timeNum);
-        }
-     }
-     creat(5);
-
     scaleW = window.innerWidth / 320;
     scaleH = window.innerHeight / 480;
     var resizes = document.querySelectorAll('.resize');
@@ -595,19 +586,25 @@
         pagination: '.swiper-pagination',
         //virtualTranslate : true,
         mousewheelControl: true,
+        watchSlidesProgress : true,
         onInit: function(swiper) {
             swiperAnimateCache(swiper)
             swiperAnimate(swiper);
         },
         onSlideChangeEnd: function(swiper) {
             swiperAnimate(swiper);
+            
+        },
+        onSlideChangeEnd: function(swiper){
+              if (swiper.slides[2].progress == -1) {
+                show_num(5)
+              }else{
+                show_num(1);
+              }
         },
         onTransitionEnd: function(swiper) {
             swiperAnimate(swiper);
         },
-
-
-        watchSlidesProgress: true,
 
         onProgress: function(swiper) {
             for (var i = 0; i < swiper.slides.length; i++) {
@@ -630,54 +627,25 @@
 
             }
         },
-
-
-
-    })
-
-    var myChart = echarts.init(document.getElementById('main'));
-      // 指定图表的配置项和数据
-      var option = {
-      title: {
-          text: 'ECharts'
-      },
-      tooltip : {
-        trigger: 'axis'
-      },
-      legend: {
-          data:['全省平均','本人']
-      },
-      xAxis: {
-          data: ["最近1个月","最近2个月","最近3个月"]
-      },
-      yAxis: {
-
-      },
-      series: [{
-          name: '全省平均',
-          type: 'bar',
-          data: [5, 20, 36],
-          itemStyle: {
-              normal: {
-                  color: '#dbdcdc'
-              }
-          }
-      },
-        {
-          name: '本人',
-          type: 'bar',
-          data:[1,2,3],
-          itemStyle: {
-              normal: {
-                  color: '#fbca00'
-              }
-          }
-        }
-      ]
-    };
-
-     // 使用刚指定的配置项和数据显示图表。
-     myChart.setOption(option);
+    });
+    
+    function show_num(n){ 
+        var it = $(".t_num i"); 
+        var len = String(n).length; 
+        for(var i=0;i<len;i++){ 
+            if(it.length<=i){ 
+                $(".t_num").append("<i></i>"); 
+            } 
+            var num=String(n).charAt(i); 
+            var y = -parseInt(num)*30; //y轴位置 
+            var obj = $(".t_num i").eq(i); 
+            obj.animate({ //滚动动画 
+                backgroundPosition :'(0 '+String(y)+'px)'  
+                }, 'slow','swing',function(){} 
+            ); 
+        } 
+    } 
+    show_num(1);
     </script>
 </body>
 
