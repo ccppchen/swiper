@@ -10,6 +10,7 @@
     <script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
     <script src="js/swiper.jquery.min.js"></script>
     <script src="js/swiper.animate.min.js"></script>
+    <script type="text/javascript" src="js/echarts.simple.min.js"></script>
     <style>
     * {
         margin: 0;
@@ -383,7 +384,8 @@
                 <h2>3个月</h2>
                 <div class="J-connent-title">全省平均和本人的对比</div>
                 <div class="J-zhuxing">
-                  <img src="images/zhuxing.png" alt="柱形图">
+                  <!-- <img src="images/zhuxing.png" alt="柱形图"> -->
+                  <div id="main" style="width: 100%;height:300px;"></div>
                 </div>
                 <div class="J-book">
                   <ul>
@@ -632,6 +634,48 @@
 
 
     })
+
+    var myChart = echarts.init(document.getElementById('main'));
+      // 指定图表的配置项和数据
+      var option = {
+      title: {
+          text: 'ECharts 入门示例'
+      },
+      tooltip : {
+        trigger: 'axis'
+      },
+      legend: {
+          data:['全省平均','本人']
+      },
+      xAxis: {
+          data: ["最近1个月","最近2个月","最近3个月"]
+      },
+      yAxis: {},
+      series: [{
+          name: '全省平均',
+          type: 'bar',
+          data: [5, 20, 36],
+          itemStyle: {
+              normal: {
+                  color: '#dbdcdc'
+              }
+          }
+      },
+        {
+          name: '本人',
+          type: 'bar',
+          data:[1,2,3],
+          itemStyle: {
+              normal: {
+                  color: '#fbca00'
+              }
+          }
+        }
+      ]
+    };
+
+     // 使用刚指定的配置项和数据显示图表。
+     myChart.setOption(option);
     </script>
 </body>
 
