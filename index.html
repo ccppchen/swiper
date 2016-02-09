@@ -223,89 +223,91 @@
         <div class="swiper-pagination"></div>
     </div>
     <script>
-    scaleW = window.innerWidth / 320;
-    scaleH = window.innerHeight / 480;
-    var resizes = document.querySelectorAll('.resize');
-    for (var j = 0; j < resizes.length; j++) {
-        resizes[j].style.width = parseInt(resizes[j].style.width) * scaleW + 'px';
-        resizes[j].style.height = parseInt(resizes[j].style.height) * scaleH + 'px';
-        resizes[j].style.top = parseInt(resizes[j].style.top) * scaleH + 'px';
-        resizes[j].style.left = parseInt(resizes[j].style.left) * scaleW + 'px';
-    }
+        window.onload = function (){
+            scaleW = window.innerWidth / 320;
+            scaleH = window.innerHeight / 480;
+            var resizes = document.querySelectorAll('.resize');
+            for (var j = 0; j < resizes.length; j++) {
+                resizes[j].style.width = parseInt(resizes[j].style.width) * scaleW + 'px';
+                resizes[j].style.height = parseInt(resizes[j].style.height) * scaleH + 'px';
+                resizes[j].style.top = parseInt(resizes[j].style.top) * scaleH + 'px';
+                resizes[j].style.left = parseInt(resizes[j].style.left) * scaleW + 'px';
+            }
 
-    var bgs = ['#43beef', '#fbca00', '#ffffff', '#e95d9d', '#58b431'];
-    $('.swiper-wrapper>.swiper-slide').each(function(index, element) {
-        $(element).css({
-            'background': bgs[index]
-        });
-    });
-    var dataList = ['30%', '40%', '40%', '60%', '40%', '90%'];
-    var mySwiper = new Swiper('.swiper-container', {
-        direction: 'vertical',
-        pagination: '.swiper-pagination',
-        //virtualTranslate : true,
-        mousewheelControl: true,
-        watchSlidesProgress: true,
-        onInit: function(swiper) {
-            swiperAnimateCache(swiper)
-            swiperAnimate(swiper);
-            $('.J-zhu li').each(function (index, element) {
-              $(element).css({
-                'height': dataList[index]
-              })
+            var bgs = ['#43beef', '#fbca00', '#ffffff', '#e95d9d', '#58b431'];
+            $('.swiper-wrapper>.swiper-slide').each(function(index, element) {
+                $(element).css({
+                    'background': bgs[index]
+                });
             });
-        },
-        onSlideChangeEnd: function(swiper) {
-            swiperAnimate(swiper);
-            if (swiper.slides[2].progress == -1) {
-                show_num(5)
-            } else {
-                show_num(1);
+            var dataList = ['30%', '40%', '40%', '60%', '40%', '90%'];
+            var mySwiper = new Swiper('.swiper-container', {
+                direction: 'vertical',
+                pagination: '.swiper-pagination',
+                //virtualTranslate : true,
+                mousewheelControl: true,
+                watchSlidesProgress: true,
+                onInit: function(swiper) {
+                    swiperAnimateCache(swiper)
+                    swiperAnimate(swiper);
+                    $('.J-zhu li').each(function (index, element) {
+                      $(element).css({
+                        'height': dataList[index]
+                      })
+                    });
+                },
+                onSlideChangeEnd: function(swiper) {
+                    swiperAnimate(swiper);
+                    if (swiper.slides[2].progress == -1) {
+                        show_num(5)
+                    } else {
+                        show_num(1);
+                    }
+                },
+                onTransitionEnd: function(swiper) {
+                    swiperAnimate(swiper);
+                },
+
+                onProgress: function(swiper) {
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        var slide = swiper.slides[i];
+                        var progress = slide.progress;
+                        var translate = progress * swiper.height / 4;
+                        scale = 1 - Math.min(Math.abs(progress * 0.5), 1);
+                        var opacity = 1 - Math.min(Math.abs(progress / 2), 0.5);
+                        slide.style.opacity = opacity;
+                        es = slide.style;
+                        es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + translate + 'px,-' + translate + 'px) scaleY(' + scale + ')';
+
+                    }
+                },
+
+                onSetTransition: function(swiper, speed) {
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        es = swiper.slides[i].style;
+                        es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
+
+                    }
+                },
+            });
+
+            function show_num(n) {
+                var it = $(".t_num i");
+                var len = String(n).length;
+                for (var i = 0; i < len; i++) {
+                    if (it.length <= i) {
+                        $(".t_num").append("<i></i>");
+                    }
+                    var num = String(n).charAt(i);
+                    var y = -parseInt(num) * 30; //y轴位置 
+                    var obj = $(".t_num i").eq(i);
+                    obj.animate({ //滚动动画 
+                        backgroundPosition: '(0 ' + String(y) + 'px)'
+                    }, 'slow', 'swing', function() {});
+                }
             }
-        },
-        onTransitionEnd: function(swiper) {
-            swiperAnimate(swiper);
-        },
-
-        onProgress: function(swiper) {
-            for (var i = 0; i < swiper.slides.length; i++) {
-                var slide = swiper.slides[i];
-                var progress = slide.progress;
-                var translate = progress * swiper.height / 4;
-                scale = 1 - Math.min(Math.abs(progress * 0.5), 1);
-                var opacity = 1 - Math.min(Math.abs(progress / 2), 0.5);
-                slide.style.opacity = opacity;
-                es = slide.style;
-                es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'translate3d(0,' + translate + 'px,-' + translate + 'px) scaleY(' + scale + ')';
-
-            }
-        },
-
-        onSetTransition: function(swiper, speed) {
-            for (var i = 0; i < swiper.slides.length; i++) {
-                es = swiper.slides[i].style;
-                es.webkitTransitionDuration = es.MsTransitionDuration = es.msTransitionDuration = es.MozTransitionDuration = es.OTransitionDuration = es.transitionDuration = speed + 'ms';
-
-            }
-        },
-    });
-
-    function show_num(n) {
-        var it = $(".t_num i");
-        var len = String(n).length;
-        for (var i = 0; i < len; i++) {
-            if (it.length <= i) {
-                $(".t_num").append("<i></i>");
-            }
-            var num = String(n).charAt(i);
-            var y = -parseInt(num) * 30; //y轴位置 
-            var obj = $(".t_num i").eq(i);
-            obj.animate({ //滚动动画 
-                backgroundPosition: '(0 ' + String(y) + 'px)'
-            }, 'slow', 'swing', function() {});
-        }
-    }
-    show_num(0);
+            show_num(0);
+        };
     </script>
 </body>
 
